@@ -1,4 +1,4 @@
-cofeed : jQuery feed parser plugin in CoffeeScript, with support for non-standard item tags
+coffeed : jQuery feed parser plugin in CoffeeScript, with support for non-standard item tags
 Copyright (C) 2011 Esteban Ignacio Invernizzi - invernizzie@gmail.com
 Licensed under the MIT (MIT-license.txt) license.
 
@@ -23,7 +23,7 @@ Usage
     * url: the feed URL (required).
     * data: data to be sent to the server. See jQuery.ajax data property.
     * success: a function to be called if the request succeeds.
-      The function gets passed one argument: the JFeed object.
+      The function gets passed one argument: the Coffeed object.
     
     Example:
     
@@ -32,7 +32,7 @@ Usage
         success: (feed) ->
             alert feed.title
     
-JFeed properties
+Coffeed properties
 ================
 
     * feed.type
@@ -42,9 +42,9 @@ JFeed properties
     * feed.description
     * feed.language
     * feed.updated
-    * feed.items: an array of JFeedItem
+    * feed.items: an array of CoffeedItem
     
-JFeedItem properties
+CoffeedItem properties
 ====================
 
     * item.title

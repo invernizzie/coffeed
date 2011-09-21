@@ -1,21 +1,27 @@
-SRC_DIR = src
+COFFEE_DIR = coffee
+JS_DIR = js
 BUILD_DIR = build
 
-JS_FILES = ${SRC_DIR}/jfeed.js\
- ${SRC_DIR}/jfeeditem.js\
- ${SRC_DIR}/jatom.js\
- ${SRC_DIR}/jrss.js
+COFFEE_FILES = ${COFFEE_DIR}/coffeed.coffee\
+ ${COFFEE_DIR}/cofeeditem.coffee\
+ ${COFFEE_DIR}/coffeedatom.coffee\
+ ${COFFEE_DIR}/coffeedrss.coffee\
 
-WE = ${BUILD_DIR}/dist/jquery.jfeed.js
-WE_PACK = ${BUILD_DIR}/dist/jquery.jfeed.pack.js
-WE_ARCH = ../jquery.jfeed.tar.gz
+JS_FILES = ${JS_DIR}/coffeed.js\
+ ${JS_DIR}/cofeeditem.js\
+ ${JS_DIR}/coffeedatom.js\
+ ${JS_DIR}/coffeedrss.js
+
+WE = ${BUILD_DIR}/dist/jquery.coffeed.js
+WE_PACK = ${BUILD_DIR}/dist/jquery.coffeed.pack.js
+WE_ARCH = ../jquery.coffeed.tar.gz
 
 MERGE = sed -s -e '1 s/^\xEF\xBB\xBF//' ${JS_FILES} > ${WE}
 PACKER = perl -I${BUILD_DIR}/packer ${BUILD_DIR}/packer/jsPacker.pl -i ${WE} -o ${WE_PACK} -e62
 
 all: archive
 
-jfeed:
+coffeed:
 	@@echo "Building" ${WE}
 
 	@@echo " - Merging files"
@@ -24,7 +30,7 @@ jfeed:
 	@@echo ${WE} "Built"
 	@@echo
 
-pack: jfeed
+pack: coffeed
 	@@echo "Building" ${WE_PACK}
 
 	@@echo " - Compressing using Packer"
@@ -37,4 +43,4 @@ archive: pack
 	@@echo "Building" ${WE_ARCH}
 
 	@@echo " - Creating archive"
-	@@tar -C .. -czf ${WE_ARCH} --exclude '.git' jFeed
+	@@tar -C .. -czf ${WE_ARCH} --exclude '.git' coffeed
