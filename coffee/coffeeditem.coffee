@@ -1,5 +1,5 @@
-JFeedItem = ->
-JFeedItem:: = 
+CoffeedItem = ->
+CoffeedItem:: =
   title: ""
   link: ""
   description: ""

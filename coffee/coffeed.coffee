@@ -1,4 +1,16 @@
-JFeed = (xml) ->
+###
+    coffeed : jQuery feed parser plugin in CoffeeScript, with support for non-standard item tags
+    Copyright (C) 2011 Esteban Ignacio Invernizzi - invernizzie@gmail.com
+    Licensed under the MIT (MIT-license.txt) license.
+    github.com/invernizzie/coffeed
+
+    based on...
+
+    jFeed : jQuery feed parser plugin
+    Copyright (C) 2007 Jean-François Hovinne - http://www.hovinne.com/
+###
+
+Coffeed = (xml) ->
   @parse xml  if xml
 jQuery.getFeed = (options) ->
   options = jQuery.extend(
@@ -16,13 +28,13 @@ jQuery.getFeed = (options) ->
       cache: options.cache
       dataType: (if (jQuery.browser.msie) then "text" else "xml")
       success: (xml) ->
-        feed = new JFeed(xml)
+        feed = new Coffeed(xml)
         options.success feed  if jQuery.isFunction(options.success)
       
       error: (xhr, msg, e) ->
         options.failure msg, e  if jQuery.isFunction(options.failure)
 
-JFeed:: = 
+Coffeed:: =
   type: ""
   version: ""
   title: ""
@@ -35,8 +47,8 @@ JFeed:: =
       xml = xmlDoc
     if jQuery("channel", xml).length == 1
       @type = "rss"
-      feedClass = new JRss(xml)
+      feedClass = new CoffeedRss(xml)
     else if jQuery("feed", xml).length == 1
       @type = "atom"
-      feedClass = new JAtom(xml)
+      feedClass = new CoffeedAtom(xml)
     jQuery.extend this, feedClass  if feedClass
