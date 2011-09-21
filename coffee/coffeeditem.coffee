@@ -1,7 +1,6 @@
-CoffeedItem = ->
-CoffeedItem:: =
-  title: ""
-  link: ""
-  description: ""
-  updated: ""
-  id: ""
+class CoffeedItem
+    title: ""
+    link: ""
+    description: ""
+    updated: ""
+    id: ""
