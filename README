@@ -1,3 +1,9 @@
+cofeed : jQuery feed parser plugin in CoffeeScript, with support for non-standard item tags
+Copyright (C) 2011 Esteban Ignacio Invernizzi - invernizzie@gmail.com
+Licensed under the MIT (MIT-license.txt) license.
+
+based on...
+
 jFeed : jQuery feed parser plugin
 Copyright (C) 2007 Jean-François Hovinne - http://www.hovinne.com/
 Dual licensed under the MIT (MIT-license.txt)
@@ -6,7 +12,7 @@ and GPL (GPL-license.txt) licenses.
 Usage
 =====
 
-    jQuery.getFeed(options);
+    jQuery.getFeed(options)
     
     options:
     
@@ -17,12 +23,10 @@ Usage
     
     Example:
     
-    jQuery.getFeed({
-        url: 'rss.xml',
-        success: function(feed) {
-            alert(feed.title);
-        }
-    });
+    jQuery.getFeed
+        url: 'rss.xml'
+        success: (feed) ->
+            alert feed.title
     
 JFeed properties
 ================
@@ -44,6 +48,10 @@ JFeedItem properties
     * item.description
     * item.updated
     * item.id
+    * a property for every other tag name found inside each <item></item> block
+    
+    Any property whose tagname is repeated inside an item block will be an 
+    array containing an element for each one, in order of appearance. 
 
 Please see the provided examples for more information.
 
