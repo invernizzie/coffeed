@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Monterrey, MX</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Monterrey__MX/*http://weather.yahoo.com/forecast/MXNL0068_c.html</link>
+<description>Yahoo! Weather for Monterrey, MX</description>
+<language>en-us</language>
+<lastBuildDate>Thu, 22 Sep 2011 11:38 am CDT</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Monterrey" region="NL"   country="Mexico"/>
+<yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/>
+<yweather:wind chill="29"   direction="80"   speed="9.66" />
+<yweather:atmosphere humidity="45"  visibility="12.87"  pressure="1015.92"  rising="2" />
+<yweather:astronomy sunrise="7:29 am"   sunset="7:36 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Monterrey, MX at 11:38 am CDT</title>
+<geo:lat>25.67</geo:lat>
+<geo:long>-100.31</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Monterrey__MX/*http://weather.yahoo.com/forecast/MXNL0068_c.html</link>
+<pubDate>Thu, 22 Sep 2011 11:38 am CDT</pubDate>
+<yweather:condition  text="Sunny"  code="32"  temp="29"  date="Thu, 22 Sep 2011 11:38 am CDT" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/32.gif"/><br />
+<b>Current Conditions:</b><br />
+Sunny, 29 C<BR />
+<BR /><b>Forecast:</b><BR />
+Thu - Isolated Thunderstorms. High: 34 Low: 19<br />
+Fri - Partly Cloudy. High: 34 Low: 20<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Monterrey__MX/*http://weather.yahoo.com/forecast/MXNL0068_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Thu" date="22 Sep 2011" low="19" high="34" text="Isolated Thunderstorms" code="37" />
+<yweather:forecast day="Fri" date="23 Sep 2011" low="20" high="34" text="Partly Cloudy" code="30" />
+<guid isPermaLink="false">MXNL0068_2011_09_23_7_00_CDT</guid>
+</item>
+</channel>
+</rss>
+<!-- api7.weather.ac4.yahoo.com compressed/chunked Thu Sep 22 10:44:30 PDT 2011 -->

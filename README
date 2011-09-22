@@ -50,12 +50,63 @@ CoffeedItem properties
     * item.title
     * item.link
     * item.description
-    * item.updated
-    * item.id
+    * item.pubDate
+    * item.guid
     * a property for every other tag name found inside each <item></item> block
-    
+
+    Every property is an object with the structure:
+
+    property
+    |
+    +- text
+    +- attrs
+
+    where text is the text content of the tag, and attrs has a property for each
+    tag attribute of the same name.
+
+    For example, an item with the structure:
+
+    <item>
+        <title id="feed-1">Feed title</title>
+    </item>
+
+    will result in a CoffeedItem like:
+
+    {
+        title: {
+            text: "Feed title",
+            attrs: {
+                id: "feed-1"
+            }
+        }
+    }
+
     Any property whose tagname is repeated inside an item block will be an 
-    array containing an element for each one, in order of appearance. 
+    array containing an element for each one, in order of appearance. For example
+    for the item:
+
+    <item>
+        <link src="http://www.myfeed.com">My feed</link>
+        <link src="http://www.myotherfeed.com">My other feed</link>
+    </item>
+
+    the following CoffeedItem will be built:
+
+    {
+        link: [
+            {
+                text: "My feed",
+                attrs: {
+                    src: "http://www.myfeed.com"
+                }
+            }, {
+                text: "My other feed",
+                attrs: {
+                    src: "http://www.myotherfeed.com"
+                }
+            }
+        ]
+    }
 
 Please see the provided examples for more information.
 

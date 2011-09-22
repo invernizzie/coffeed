@@ -10,8 +10,13 @@
     Copyright (C) 2007 Jean-François Hovinne - http://www.hovinne.com/
 ###
 
-jQuery.getFeed = (options) ->
-    options = jQuery.extend(
+$ = jQuery
+# Support old version of jQuery
+unless $.isArray?
+    $.isArray = Array.isArray or (obj) -> !!(obj and obj.concat and obj.unshift and not obj.callee)
+
+$.getFeed = (options) ->
+    options = $.extend(
         url: null
         data: null
         cache: true
@@ -25,13 +30,13 @@ jQuery.getFeed = (options) ->
             url: options.url
             data: options.data
             cache: options.cache
-            dataType: if jQuery.browser.msie then "text" else "xml"
+            dataType: if $.browser.msie then "text" else "xml"
             success: (xml) ->
                 feed = new Coffeed(xml)
-                options.success(feed) if jQuery.isFunction(options.success)
+                options.success(feed) if $.isFunction(options.success)
 
             error: (xhr, msg, e) ->
-                options.failure(msg, e) if jQuery.isFunction(options.failure)
+                options.failure(msg, e) if $.isFunction(options.failure)
 
 class Coffeed
     type: ""
@@ -44,17 +49,17 @@ class Coffeed
         @parse xml if xml?
 
     parse: (xml) ->
-        if jQuery.browser.msie
+        if $.browser.msie
             xmlDoc = new ActiveXObject("Microsoft.XMLDOM")
             xmlDoc.loadXML(xml)
             xml = xmlDoc
 
-        if jQuery("channel", xml).length == 1
+        if $("channel", xml).length == 1
             @type = "rss"
             feedClass = new CoffeedRss(xml)
 
-        else if jQuery("feed", xml).length == 1
+        else if $("feed", xml).length == 1
             @type = "atom"
             feedClass = new CoffeedAtom(xml)
 
-        jQuery.extend(this, feedClass) if feedClass?
+        $.extend(this, feedClass) if feedClass?

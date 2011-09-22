@@ -16,9 +16,9 @@ class CoffeedAtom
         feed = this
         jQuery("entry", xml).each ->
             item = new CoffeedItem()
-            item.title = jQuery(this).find("title").eq(0).text()
-            item.link = jQuery(this).find("link").eq(0).attr("href")
-            item.description = jQuery(this).find("content").eq(0).text()
-            item.updated = jQuery(this).find("updated").eq(0).text()
-            item.id = jQuery(this).find("id").eq(0).text()
+            item.title =        {text: jQuery(this).find("title").eq(0).text()}
+            item.link =         {text: jQuery(this).find("link").eq(0).attr("href")}
+            item.description =  {text: jQuery(this).find("content").eq(0).text()}
+            item.updated =      {text: jQuery(this).find("pubDate").eq(0).text()}
+            item.id =           {text: jQuery(this).find("guid").eq(0).text()}
             feed.items.push(item)
