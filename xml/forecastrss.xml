@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - Sunnyvale, CA</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_c.html</link>
+<description>Yahoo! Weather for Sunnyvale, CA</description>
+<language>en-us</language>
+<lastBuildDate>Fri, 23 Sep 2011 4:55 am PDT</lastBuildDate>
+<ttl>60</ttl>
+<yweather:location city="Sunnyvale" region="CA"   country="United States"/>
+<yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/>
+<yweather:wind chill="18"   direction="0"   speed="0" />
+<yweather:atmosphere humidity="75"  visibility="16.09"  pressure="1014.9"  rising="2" />
+<yweather:astronomy sunrise="6:54 am"   sunset="7:02 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for Sunnyvale, CA at 4:55 am PDT</title>
+<geo:lat>37.37</geo:lat>
+<geo:long>-122.04</geo:long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_c.html</link>
+<pubDate>Fri, 23 Sep 2011 4:55 am PDT</pubDate>
+<yweather:condition  text="Fair"  code="33"  temp="18"  date="Fri, 23 Sep 2011 4:55 am PDT" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/33.gif"/><br />
+<b>Current Conditions:</b><br />
+Fair, 18 C<BR />
+<BR /><b>Forecast:</b><BR />
+Fri - Sunny. High: 30 Low: 16<br />
+Sat - Partly Cloudy. High: 23 Low: 16<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/Sunnyvale__CA/*http://weather.yahoo.com/forecast/USCA1116_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<yweather:forecast day="Fri" date="23 Sep 2011" low="16" high="30" text="Sunny" code="32" />
+<yweather:forecast day="Sat" date="24 Sep 2011" low="16" high="23" text="Partly Cloudy" code="30" />
+<guid isPermaLink="false">USCA1116_2011_09_24_7_00_PDT</guid>
+</item>
+</channel>
+</rss>
+<!-- api12.weather.ac4.yahoo.com compressed/chunked Fri Sep 23 05:43:48 PDT 2011 -->
