@@ -10,8 +10,15 @@
     Copyright (C) 2007 Jean-François Hovinne - http://www.hovinne.com/
 ###
 
-jQuery.getFeed = (options) ->
-    options = jQuery.extend(
+$ = jQuery
+# Support old jQuery versions:
+unless $.isArray?
+    $.isArray = Array.isArray or (obj) -> !!(obj and obj.concat and obj.unshift and not obj.callee)
+
+gfeedUrlBase = "http://ajax.googleapis.com/ajax/services/feed/load"
+
+$.getFeed = (options) ->
+    options = $.extend(
         url: null
         data: null
         cache: true
@@ -20,18 +27,15 @@ jQuery.getFeed = (options) ->
         options)
 
     if options.url?
+        gurl = "#{gfeedUrlBase}?v=1.0&callback=?&output=xml&q=" + escape(options.url);
         $.ajax
-            type: "GET"
-            url: options.url
-            data: options.data
-            cache: options.cache
-            dataType: if jQuery.browser.msie then "text" else "xml"
-            success: (xml) ->
-                feed = new Coffeed(xml)
-                options.success(feed) if jQuery.isFunction(options.success)
-
-            error: (xhr, msg, e) ->
-                options.failure(msg, e) if jQuery.isFunction(options.failure)
+            url: gurl
+            dataType: 'json'
+            success: (data) ->
+                feed = new Coffeed(data.responseData.xmlString)
+                options.success(feed) if $.isFunction(options.success)
+            error: (xhr, textStatus, error) ->
+                options.failure(textStatus, error) if jQuery.isFunction(options.failure)
 
 class Coffeed
     type: ""
@@ -44,17 +48,17 @@ class Coffeed
         @parse xml if xml?
 
     parse: (xml) ->
-        if jQuery.browser.msie
+        if $.browser.msie
             xmlDoc = new ActiveXObject("Microsoft.XMLDOM")
             xmlDoc.loadXML(xml)
             xml = xmlDoc
 
-        if jQuery("channel", xml).length == 1
+        if $("channel", xml).length == 1
             @type = "rss"
             feedClass = new CoffeedRss(xml)
 
-        else if jQuery("feed", xml).length == 1
+        else if $("feed", xml).length == 1
             @type = "atom"
             feedClass = new CoffeedAtom(xml)
 
-        jQuery.extend(this, feedClass) if feedClass?
+        $.extend(this, feedClass) if feedClass?
