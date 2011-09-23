@@ -43,14 +43,12 @@ class CoffeedRss
                 for attr in this.attributes
                     newField.attrs[attr.nodeName] = attr.nodeValue
 
-                if not item[this.tagName]? or item[this.tagName] is ""
-                    item[this.tagName] = newField
+                tagName = this.tagName.toLowerCase()
+                if not item[tagName]? or item[tagName] is ""
+                    item[tagName] = newField
                 else
-                    item[this.tagName] = [item[this.tagName]] unless $.isArray(item[this.tagName])
-                    item[this.tagName].push(newField)
-
-                # item[@tagName] = $(this).text() unless item[@tagName]?
-
+                    item[tagName] = [item[tagName]] unless $.isArray(item[tagName])
+                    item[tagName].push(newField)
 
             feed.items.push(item)
 
