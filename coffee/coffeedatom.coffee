@@ -21,4 +21,5 @@ class CoffeedAtom
             item.description =  {text: jQuery(this).find("content").eq(0).text()}
             item.updated =      {text: jQuery(this).find("pubDate").eq(0).text()}
             item.id =           {text: jQuery(this).find("guid").eq(0).text()}
+
             feed.items.push(item)

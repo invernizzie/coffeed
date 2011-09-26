@@ -28,6 +28,14 @@ class CoffeedRss
 
             item = new CoffeedItem();
 
+            ###
+            item.title = $(this).find('title').eq(0).text()
+            item.link = $(this).find('link').eq(0).text()
+            item.description = $(this).find('description').eq(0).text()
+            item.updated = $(this).find('pubDate').eq(0).text()
+            item.id = $(this).find('guid').eq(0).text()
+            ###
+
             $(this).children().each ->
                 newField =
                     text: $(this).text()
@@ -35,10 +43,12 @@ class CoffeedRss
                 for attr in this.attributes
                     newField.attrs[attr.nodeName] = attr.nodeValue
 
-                if item[this.tagName]? and typeof item[this.tagName] != "undefined" and item[this.tagName] != ""
-                    item[this.tagName] = [item[this.tagName]] unless $.isArray(item[this.tagName])
-                    item[this.tagName].push(newField)
+                tagName = this.tagName.toLowerCase()
+                if not item[tagName]? or item[tagName] is ""
+                    item[tagName] = newField
                 else
-                    item[this.tagName] = newField
+                    item[tagName] = [item[tagName]] unless $.isArray(item[tagName])
+                    item[tagName].push(newField)
 
             feed.items.push(item)
+

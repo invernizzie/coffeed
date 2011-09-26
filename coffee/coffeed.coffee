@@ -11,9 +11,11 @@
 ###
 
 $ = jQuery
-# Support old version of jQuery
+# Support old jQuery versions:
 unless $.isArray?
     $.isArray = Array.isArray or (obj) -> !!(obj and obj.concat and obj.unshift and not obj.callee)
+
+gfeedUrlBase = "http://ajax.googleapis.com/ajax/services/feed/load"
 
 $.getFeed = (options) ->
     options = $.extend(
@@ -25,18 +27,15 @@ $.getFeed = (options) ->
         options)
 
     if options.url?
+        gurl = "#{gfeedUrlBase}?v=1.0&callback=?&output=xml&q=" + escape(options.url);
         $.ajax
-            type: "GET"
-            url: options.url
-            data: options.data
-            cache: options.cache
-            dataType: if $.browser.msie then "text" else "xml"
-            success: (xml) ->
-                feed = new Coffeed(xml)
+            url: gurl
+            dataType: 'json'
+            success: (data) ->
+                feed = new Coffeed(data.responseData.xmlString)
                 options.success(feed) if $.isFunction(options.success)
-
-            error: (xhr, msg, e) ->
-                options.failure(msg, e) if $.isFunction(options.failure)
+            error: (xhr, textStatus, error) ->
+                options.failure(textStatus, error) if jQuery.isFunction(options.failure)
 
 class Coffeed
     type: ""
